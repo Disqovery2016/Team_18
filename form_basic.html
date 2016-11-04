@@ -1,0 +1,267 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!--IE Compatibility modes-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Mobile first-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Dashboard</title>
+    
+    <meta name="description" content="DigiCare">
+    <meta name="author" content="">
+    
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/lib/bootstrap/css/bootstrap.css">
+    
+    <!-- Metis core stylesheet -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    
+    <!-- metisMenu stylesheet -->
+    <link rel="stylesheet" href="assets/lib/metismenu/metisMenu.css">
+    
+    <!-- animate.css stylesheet -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script>
+        less = {
+            env: "development",
+            relativeUrls: false,
+            rootpath: "/assets/"
+        };
+    </script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
+    <script src="assets/js/controller.js"></script>
+  </head>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="box">
+            <header class="dark">
+               
+                <h5>Personal Details</h5>
+                <!-- .toolbar -->
+         
+            </header>
+            <div id="collapse2" class="body">
+                <form class="form-horizontal" id="popup-validation" method="post" action="php\patient_entry.php">
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-4">Name</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="validate[required] form-control" name="name" id="name">
+                        </div>
+                    </div>
+  <div class="form-group">
+                        <label class="control-label col-lg-4">E-mail</label>
+
+                        <div class=" col-lg-4">
+                            <input class="validate[required,custom[email]] form-control" type="text" name="email1"
+                                   id="email1"/>
+                        </div>
+                    </div>
+
+<div class="form-group">
+                        <label class="control-label col-lg-4">Date of Birth</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="validate[required] form-control" name="dob" id="dob">
+                        </div>
+                    </div>
+<div class="form-group">
+                        <label class="control-label col-lg-4">Weight</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="validate[required] form-control" name="weight" id="weight">
+ <span class="help-block">in kg</span>
+                        </div>
+                    </div>
+
+<div class="form-group">
+                        <label class="control-label col-lg-4">Height</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="validate[required] form-control" name="height" id="height">
+ <span class="help-block">in cm</span>
+                        </div>
+                    </div>
+ <div class="form-group">
+                        <label class="control-label col-lg-4">Contact Number</label>
+
+                        <div class=" col-lg-4">
+                            <input value="0123456789" class="validate[optional,maxSize[10]] form-control" type="text"
+                                   name="contact_number" id="contact_number"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-4">Gender</label>
+                        <div class="col-lg-4">
+                            <select name="gender" id="gender" class="validate[required] form-control">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+ <header class="dark">
+               
+                <h5>Personal History</h5>
+                <!-- .toolbar -->
+         
+            </header>
+<div class="form-group">
+                        <label class="control-label col-lg-4">Do you smoke?</label>
+                        <div class="col-lg-4">
+                            <select name="smoke" id="smoke" class="validate[required] form-control">
+                                
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+<div class="form-group">
+                        <label class="control-label col-lg-4">Do you have BP problems?</label>
+                        <div class="col-lg-4">
+                            <select name="bp" id="bp" class="validate[required] form-control">
+                                
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+
+<div class="form-group">
+                        <label class="control-label col-lg-4">Do you have heart related issues?</label>
+                        <div class="col-lg-4">
+                            <select name="heart_issues" id="heart_issues" class="validate[required] form-control">
+                                
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+
+<div class="form-group">
+                        <label class="control-label col-lg-4">Do you diabetes?</label>
+                        <div class="col-lg-4">
+                            <select name="diabetes" id="diabetes" class="validate[required] form-control">
+                                
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+
+ <header class="dark">
+               
+                <h5>Relative's Details</h5>
+                <!-- .toolbar -->
+         
+            </header>
+  <div class="form-group">
+                        <label class="control-label col-lg-4">Name</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="validate[required] form-control" name="rname" id="rname">
+                        </div>
+                    </div>
+  <div class="form-group">
+                        <label class="control-label col-lg-4">E-mail</label>
+
+                        <div class=" col-lg-4">
+                            <input class="validate[required,custom[email]] form-control" type="text" name="remail"
+                                   id="remail"/>
+                        </div>
+                    </div>
+
+<div class="form-group">
+                        <label class="control-label col-lg-4">Contact Number</label>
+
+                        <div class=" col-lg-4">
+                            <input class="validate[optional,maxSize[10]] form-control" type="text"
+                                   name="rcontact_number" id="rcontact_number"/>
+                        </div>
+                    </div>
+ <div class="form-group">
+                        <label class="control-label col-lg-4">Relationship</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="validate[required] form-control" name="relationship" id="relationship">
+                        </div>
+                    </div>
+
+<header class="dark">
+               
+                <h5>Doctor's's Details(Optional)</h5>
+                <!-- .toolbar -->
+         
+            </header>
+ <div class="form-group">
+                        <label class="control-label col-lg-4">Name</label>
+                        <div class="col-lg-4">
+                            <input type="text" class="validate[required] form-control" name="dname" id="dname">
+                        </div>
+                    </div>
+  <div class="form-group">
+                        <label class="control-label col-lg-4">E-mail</label>
+
+                        <div class=" col-lg-4">
+                            <input class="validate[required,custom[email]] form-control" type="text" name="demail"
+                                   id="demail"/>
+                        </div>
+                    </div>
+
+<div class="form-group">
+                        <label class="control-label col-lg-4">Contact Number</label>
+
+                        <div class=" col-lg-4">
+                            <input class="validate[optional,maxSize[10]] form-control" type="text"
+                                   name="dcontact_number" id="dcontact_number"/>
+                        </div>
+                    </div>
+ <div class="form-group">
+                        <label class="control-label col-lg-4">Hospital/Clinic Address</label>
+                        <div class="col-lg-4">
+                            <input type="textbox" class="validate[required] form-control" name="hospital_address" id="hospital_address">
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="form-actions no-margin-bottom">
+                        <input type="submit" value="Submit" name="submit" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+   <script src="assets/lib/jquery/jquery.js"></script>
+
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.18.4/js/jquery.tablesorter.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.selection.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.resize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+                    
+            <!--Bootstrap -->
+            <script src="assets/lib/bootstrap/js/bootstrap.js"></script>
+            <!-- MetisMenu -->
+            <script src="assets/lib/metismenu/metisMenu.js"></script>
+            <!-- Screenfull -->
+            <script src="assets/lib/screenfull/screenfull.js"></script>
+
+
+            <!-- Metis core scripts -->
+            <script src="assets/js/core.js"></script>
+            <!-- Metis demo scripts -->
+            <script src="assets/js/app.js"></script>
+
+</body>
+</html>

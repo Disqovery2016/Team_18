@@ -1,0 +1,42 @@
+patientDetail
+		
+		1. patient_id
+		2. patient_name
+		3. dob
+		4. weight
+		5. height
+		6. contact_number
+		7. gender
+		
+	PatientMedicalDetail
+		
+		1.patient_id
+		2. smoke
+		3. bp
+		4. heart_issues
+		5. diabetes
+		
+	patientRelativeDetail
+		
+		1. patient_id
+		2. patient_rname
+		3. patient_rcontact_number
+		4. patient_relationship
+	
+	patientDoctorDetails
+	
+		1. patient_id
+		2. patient_dname
+		3. patient_demail
+		4. patient_dcontact_number
+		5. patient-hospital_address
+		
+	patientMonitoring
+	
+		1. patient_id
+		2. patient_temp
+		3. patient_bp
+		4. patient_heartrate
+		5. patient_pulseoximeter
+		6. patient_bloodglucose
+		7. request_dateTime
