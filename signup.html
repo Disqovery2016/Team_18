@@ -48,12 +48,12 @@
          
             </header>
             <div id="collapse2" class="body">
-                <form class="form-horizontal" id="popup-validation">
+                <form class="form-horizontal" id="popup-validation" method="post" action="php\patient_entry.php">
 
                     <div class="form-group">
                         <label class="control-label col-lg-4">Name</label>
                         <div class="col-lg-4">
-                            <input type="text" class="validate[required] form-control" name="req" id="req">
+                            <input type="text" class="validate[required] form-control" name="name" id="name">
                         </div>
                     </div>
   <div class="form-group">
@@ -66,15 +66,15 @@
                     </div>
 
 <div class="form-group">
-                        <label class="control-label col-lg-4">Age</label>
+                        <label class="control-label col-lg-4">Date of Birth</label>
                         <div class="col-lg-4">
-                            <input type="text" class="validate[required] form-control" name="req" id="req">
+                            <input type="text" class="validate[required] form-control" name="dob" id="dob">
                         </div>
                     </div>
 <div class="form-group">
                         <label class="control-label col-lg-4">Weight</label>
                         <div class="col-lg-4">
-                            <input type="text" class="validate[required] form-control" name="req" id="req">
+                            <input type="text" class="validate[required] form-control" name="weight" id="weight">
  <span class="help-block">in kg</span>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
 <div class="form-group">
                         <label class="control-label col-lg-4">Height</label>
                         <div class="col-lg-4">
-                            <input type="text" class="validate[required] form-control" name="req" id="req">
+                            <input type="text" class="validate[required] form-control" name="height" id="height">
  <span class="help-block">in cm</span>
                         </div>
                     </div>
@@ -91,17 +91,17 @@
 
                         <div class=" col-lg-4">
                             <input value="0123456789" class="validate[optional,maxSize[10]] form-control" type="text"
-                                   name="maxsize1" id="maxsize1"/>
+                                   name="contact_number" id="contact_number"/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-lg-4">Gender</label>
                         <div class="col-lg-4">
-                            <select name="sport" id="sport" class="validate[required] form-control">
-                                <option value="option1">Male</option>
-                                <option value="option2">Female</option>
-                                <option value="option3">Other</option>
+                            <select name="gender" id="gender" class="validate[required] form-control">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
                             </select>
                         </div>
                     </div>
@@ -114,20 +114,20 @@
 <div class="form-group">
                         <label class="control-label col-lg-4">Do you smoke?</label>
                         <div class="col-lg-4">
-                            <select name="sport" id="sport" class="validate[required] form-control">
+                            <select name="smoke" id="smoke" class="validate[required] form-control">
                                 
-                                <option value="option1">No</option>
-                                <option value="option2">Yes</option>
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
                             </select>
                         </div>
                     </div>
 <div class="form-group">
                         <label class="control-label col-lg-4">Do you have BP problems?</label>
                         <div class="col-lg-4">
-                            <select name="sport" id="sport" class="validate[required] form-control">
+                            <select name="bp" id="bp" class="validate[required] form-control">
                                 
-                                <option value="option1">No</option>
-                                <option value="option2">Yes</option>
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
                             </select>
                         </div>
                     </div>
@@ -135,10 +135,10 @@
 <div class="form-group">
                         <label class="control-label col-lg-4">Do you have heart related issues?</label>
                         <div class="col-lg-4">
-                            <select name="sport" id="sport" class="validate[required] form-control">
+                            <select name="heart_issues" id="heart_issues" class="validate[required] form-control">
                                 
-                                <option value="option1">No</option>
-                                <option value="option2">Yes</option>
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
                             </select>
                         </div>
                     </div>
@@ -146,11 +146,10 @@
 <div class="form-group">
                         <label class="control-label col-lg-4">Do you diabetes?</label>
                         <div class="col-lg-4">
-                            <select name="sport" id="sport" class="validate[required] form-control">
+                            <select name="diabetes" id="diabetes" class="validate[required] form-control">
                                 
-                                <option value="option1">No</option>
-                                <option value="option2">Type 1</option>
-<option value="option2">Type 2</option>
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
                             </select>
                         </div>
                     </div>
@@ -164,15 +163,15 @@
   <div class="form-group">
                         <label class="control-label col-lg-4">Name</label>
                         <div class="col-lg-4">
-                            <input type="text" class="validate[required] form-control" name="req" id="req">
+                            <input type="text" class="validate[required] form-control" name="rname" id="rname">
                         </div>
                     </div>
   <div class="form-group">
                         <label class="control-label col-lg-4">E-mail</label>
 
                         <div class=" col-lg-4">
-                            <input class="validate[required,custom[email]] form-control" type="text" name="email1"
-                                   id="email1"/>
+                            <input class="validate[required,custom[email]] form-control" type="text" name="remail"
+                                   id="remail"/>
                         </div>
                     </div>
 
@@ -181,13 +180,13 @@
 
                         <div class=" col-lg-4">
                             <input class="validate[optional,maxSize[10]] form-control" type="text"
-                                   name="maxsize1" id="maxsize1"/>
+                                   name="rcontact_number" id="rcontact_number"/>
                         </div>
                     </div>
  <div class="form-group">
                         <label class="control-label col-lg-4">Relationship</label>
                         <div class="col-lg-4">
-                            <input type="text" class="validate[required] form-control" name="req" id="req">
+                            <input type="text" class="validate[required] form-control" name="relationship" id="relationship">
                         </div>
                     </div>
 
@@ -200,15 +199,15 @@
  <div class="form-group">
                         <label class="control-label col-lg-4">Name</label>
                         <div class="col-lg-4">
-                            <input type="text" class="validate[required] form-control" name="req" id="req">
+                            <input type="text" class="validate[required] form-control" name="dname" id="dname">
                         </div>
                     </div>
   <div class="form-group">
                         <label class="control-label col-lg-4">E-mail</label>
 
                         <div class=" col-lg-4">
-                            <input class="validate[required,custom[email]] form-control" type="text" name="email1"
-                                   id="email1"/>
+                            <input class="validate[required,custom[email]] form-control" type="text" name="demail"
+                                   id="demail"/>
                         </div>
                     </div>
 
@@ -217,13 +216,13 @@
 
                         <div class=" col-lg-4">
                             <input class="validate[optional,maxSize[10]] form-control" type="text"
-                                   name="maxsize1" id="maxsize1"/>
+                                   name="dcontact_number" id="dcontact_number"/>
                         </div>
                     </div>
  <div class="form-group">
                         <label class="control-label col-lg-4">Hospital/Clinic Address</label>
                         <div class="col-lg-4">
-                            <input type="textbox" class="validate[required] form-control" name="req" id="req">
+                            <input type="textbox" class="validate[required] form-control" name="hospital_address" id="hospital_address">
                         </div>
                     </div>
 
@@ -232,7 +231,9 @@
 
 
                     <div class="form-actions no-margin-bottom">
-                        <input type="submit" value="Submit" class="btn btn-primary">
+                        <input type="submit" value="Submit" name="submit" class="btn btn-primary" style="position: relative;
+right: -45%;
+">
                     </div>
                 </form>
             </div>
