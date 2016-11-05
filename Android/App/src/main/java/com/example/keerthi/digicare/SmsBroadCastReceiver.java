@@ -65,7 +65,6 @@ public class SmsBroadCastReceiver extends BroadcastReceiver {
                             intent1.putExtra("message", smsBody);
                             context.startActivity(intent1);
 
-                                //     new WebRequest(context).execute(address, array[0], array[1]);
                             Toast.makeText(context, "Pattern Matched", Toast.LENGTH_LONG).show();
                         }
                      else {

@@ -1,5 +1,8 @@
 package com.example.keerthi.digicare;
 
+import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -12,6 +15,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+
 /**
  * Created by Keerthi on 05-11-2016.
  */
@@ -21,37 +26,55 @@ public class AlertActivity extends AppCompatActivity {
     TextView e;
     Button b;
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alert);
         e=(TextView)findViewById(R.id.message);
         b=(Button)findViewById(R.id.approve_btn);
 
 
-        Bundle extras = getIntent().getExtras();
 
-        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        final Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+        String message = getIntent().getExtras().getString("message");
+        e.setText(message);
 
 
-        if (extras != null) {
 
-            String value = extras.getString("message");
-            Toast.makeText(this, value, Toast.LENGTH_LONG).show();
 
-            e.setText(value);
-            r.play();
-        }else{
-            String value="TEST SMS";
-            e.setText(value);
+        Uri defaultRingtoneUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
+
+        MediaPlayer mediaPlayer = new MediaPlayer();
+
+        try {
+            mediaPlayer.setDataSource(this, defaultRingtoneUri);
+            mediaPlayer.setAudioStreamType(AudioManager.STREAM_NOTIFICATION);
+            mediaPlayer.prepare();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+
+                @Override
+                public void onCompletion(MediaPlayer mp)
+                {
+                    mp.release();
+                }
+            });
+            mediaPlayer.start();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+
+
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                r.stop();
-                android.os.Process.killProcess(android.os.Process.myPid());
-                System.exit(1);
+                AlertActivity.this.finishAffinity();
             }
         });
     }

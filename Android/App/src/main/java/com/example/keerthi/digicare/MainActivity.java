@@ -11,8 +11,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent1 = new Intent(this, AlertActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);;
-        intent1.putExtra("message", "Your Heart Rate is increasing, please make yourself Relax !!! ");
-        startActivity(intent1);
+    /*   Intent intent1 = new Intent(this, AlertActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent1.putExtra("message","Your Heart Rate is increasing, please make yourself Relax !!! - DigiCare");
+        startActivity(intent1); */
     }
 }
