@@ -24,7 +24,7 @@
         android:textAlignment="center"
         android:id="@+id/message"
         android:textSize="20dp"
-        android:text="Keerthi vasan is a good boy "/>
+        android:text="Your Heart Rate is increasing, please make yourself Relax !!! "/>
 
     <Button
         android:layout_width="wrap_content"

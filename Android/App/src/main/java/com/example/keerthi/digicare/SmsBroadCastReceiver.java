@@ -58,19 +58,18 @@ public class SmsBroadCastReceiver extends BroadcastReceiver {
 
                     Pattern p = Pattern.compile("[A-Z]{3,4}");
                     Matcher m = p.matcher(smsBody);
-                    if (m.find()) {
 
                         if (smsBody.indexOf("DigiCare") != -1) {
 
                             Intent intent1 = new Intent(context, AlertActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);;
-                            intent.putExtra("message", smsBody);
+                            intent1.putExtra("message", smsBody);
                             context.startActivity(intent1);
+
                                 //     new WebRequest(context).execute(address, array[0], array[1]);
                             Toast.makeText(context, "Pattern Matched", Toast.LENGTH_LONG).show();
                         }
-                    } else {
+                     else {
                         Toast.makeText(context, "Normal Message", Toast.LENGTH_LONG).show();
-
                     }
             }
         }
