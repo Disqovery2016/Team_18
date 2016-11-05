@@ -1,0 +1,302 @@
+
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!--IE Compatibility modes-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Mobile first-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Heart Rate</title>
+    
+    <meta name="description" content="DigiCare">
+    <meta name="author" content="">
+    
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/lib/bootstrap/css/bootstrap.css">
+    
+    <!-- Metis core stylesheet -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    
+    
+    <!-- animate.css stylesheet -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+google.charts.load('current', {'packages':['corechart']});
+
+ google.charts.setOnLoadCallback(temp2);
+    
+  function temp2() {
+               var options1 = {
+          title: 'Your Body Temperature',
+	colors:['#ff0000'],
+          legend: { position: 'bottom' }, min: 50
+
+        };
+
+ var people = [];
+
+   $.getJSON('assets/lib/ecg.json', function(data) {
+       $.each(data, function(i, f) {
+          people[i] = f.val0;
+     });
+j=0;
+var time =[];
+var temp = [];
+plotData();
+
+function plotData(){
+if(j>=1500){
+	j=1;
+}else{
+var sum=0;
+for(i=0;i<12;i++){
+	time[i]=i;
+	temp[i]=people[j];
+	j++;
+	sum=sum+temp[i];
+}
+var avg = sum/12;
+}
+document.getElementById('heart1').innerHTML = avg.toFixed(2);
+
+var Combined = new Array();
+for (var i = 0; i < 12; i++){
+  Combined[i] = [ time[i], temp[i] ];
+}
+console.log(Combined);
+
+var table = google.visualization.arrayToDataTable(Combined, true);    
+
+var Chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        Chart.draw(table, options1);
+}setInterval(plotData, 5000);
+});
+
+      }
+
+</script>
+
+    <script>
+        less = {
+            env: "development",
+            relativeUrls: false,
+            rootpath: "/assets/"
+        };
+    </script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>
+    <script src="assets/js/controller.js"></script>
+  </head>
+
+        <body class="   " ng-app="DigiCareApp" ng-controller="DigiCareController">
+            <div class="bg-dark dk" id="wrap">
+                <div id="top">
+                    <!-- .navbar -->
+                    <nav class="navbar navbar-inverse navbar-static-top">
+                        <div class="container-fluid">
+                    
+                    
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <header class="navbar-header">
+                    
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a href="index.html" class="navbar-brand"><img src="assets/img/logo.png" alt="" style="max-width: 50px;
+margin: 16px;"></a>
+                    
+                            </header>
+                    
+                    
+                    
+                            <div class="topnav">
+                                <div class="btn-group">
+                                    
+                                </div>
+				<div class="btn-group">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" class="btn btn-metis-1 btn-sm">
+                                            <img src="assets/img/user.jpeg" style="max-height:60px; max-width:60px;"><b class="caret"></b>
+                                      </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Change Password</a></li>
+                                            <li><a href="#">Change Profile Picture</a></li>
+                                            <li><a href="#">Update Registered Numbers</a></li>
+                                        </ul>
+  </a>
+				</div>
+                                <div class="btn-group">
+                                   
+                                    <a data-toggle="modal" data-original-title="Help" data-placement="bottom"
+                                       class="btn btn-default btn-sm"
+                                       href="#helpModal">
+                                        <i class="fa fa-question"></i>
+                                    </a>
+                                </div>
+				
+                                <div class="btn-group">
+                                    <a href="login.html" data-toggle="tooltip" data-original-title="Logout" data-placement="bottom"
+                                       class="btn btn-metis-1 btn-sm">
+                                        <i class="fa fa-power-off"></i>
+                                    </a>
+                                </div>
+                              
+                    
+                            </div>
+                    
+                            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    
+                                <!-- .nav -->
+                                <ul class="nav navbar-nav nav-tabs">
+                                    <li><a href="dashboard.html">Temperature</a></li>
+					<li class="active"><a href="#">Heart Rate</a></li>
+                                    <li><a  data-toggle="tab" href="#pressure1">Blood Pressure</a></li>
+                                   
+			 		<li><a  data-toggle="tab" href="#glucose1">Blood Glucose</a></li>
+					<li><a  data-toggle="tab" href="#weight1">Weight Monitor</a></li>
+                                    
+                                </ul>
+                                <!-- /.nav -->
+                            </div>
+                        </div>
+                        <!-- /.container-fluid -->
+                    </nav>
+                    <!-- /.navbar 
+                     </div>
+                    <!-- /#left -->
+                <div id="content">
+                    <div class="outer">
+                        <div class="inner bg-light lter">
+                            <div class="text-center">
+    <ul class="stats_box">
+
+	<li class="col-md-2 col-md-offset-1" style="margin-left:5.33333333%;">
+	    <div class="sparkline"><i class="fa fa-thermometer-1"></i></div>
+	    <div class="stat_text">
+<p><strong>98.6</strong>&deg F<br>Temperature</p>
+	    </div>
+	</li>
+
+	<li class="col-md-2">
+	    <div class="sparkline"><i class="fa fa-heart"></i></div>
+	    <div class="stat_text">
+		<p><strong id="heart1">72</strong>beats/hour<br>Heart Rate</p>
+	    </div>
+	</li>
+	
+<li class="col-md-2">
+	    <div class="sparkline"><i class="fa fa-compress"></i></div>
+	    <div class="stat_text">
+		<p><strong>120/80</strong>mm Hg<br>Blood Pressure</p>
+	    </div>
+	</li>
+
+	<li class="col-md-2">
+	    <div class="sparkline"><i class="fa fa-birthday-cake"></i></div>
+	    <div class="stat_text">
+<p><strong>80</strong>mg/dL<br>Blood Sugar Level</p>
+	    </div>
+	</li>
+<li class="col-md-2">
+	    <div class="sparkline"><i class="fa fa-user"></i></div>
+	    <div class="stat_text">
+		<p><strong>80</strong>kg<br>Weight</p>
+	    </div>
+	</li>
+    </ul>
+</div>
+<hr>
+ <div id="heart">
+
+<div id='curve_chart' style="width: 800px; height: 350px; margin-botton:30px;" class="col-md-8 col-sm-12 col-lg-8"></div>
+<div id="temp_data" class="col-md-4 col-sm-12 col-lg-4">
+<div class="row" style="padding:20px;">
+        <div class="box" style="min-height:250px;">	
+<header class="dark">
+               
+                <h5>In Last 24 Hours</h5>
+                <!-- .toolbar -->
+        
+            </header>	
+ <p style="text-align:center;"><strong style="padding: 50px;text-align: justify;font-size: 26px;margin-top: 30px;position: relative;top: 50px;">
+Your average heart rate in the last 24 hours has been <a style="color:red;">120</a> beats/minute.</strong></p>
+	</div>
+</div>
+
+</div>
+   
+</div>
+<div class="tab-content">
+  <div id="temp1" class="tab-pane fade">
+<div ng-include="'temperature.html'"></div>
+</div>
+ <div id="pressure1" class="tab-pane fade">
+<div ng-include="'bloodPressure.html'"></div>
+</div>
+ <div id="glucose1" class="tab-pane fade">
+<div ng-include="'bloodGlucose.html'"></div>
+</div>
+ <div id="weight1" class="tab-pane fade">
+<div ng-include="'weight.html'"></div>
+</div>
+</div>
+                       <!-- /.inner -->
+                    </div>
+                    <!-- /.outer -->
+                </div>
+                <!-- /#content -->
+            <!-- /#wrap -->
+            <footer class="Footer bg-dark dker">
+                <p>2016 &copy; DigiCare</p>
+            </footer>
+            <!-- /#footer -->
+            <!-- #helpModal -->
+            <div id="helpModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header" style="color:black;">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">What are you looking for?</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p style="color:black;">
+                                Please write your query to us as shalinee43@gmail.com. We'll get back to you as soon as possible.
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+            <!-- /#helpModal -->
+            <!--jQuery -->
+            <script src="assets/lib/jquery/jquery.js"></script>
+
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.18.4/js/jquery.tablesorter.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.selection.min.js"></script>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.resize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+                   <!--Bootstrap -->
+            <script src="assets/lib/bootstrap/js/bootstrap.js"></script>
+            <!-- Metis demo scripts -->
+            <script src="assets/js/app.js"></script>
+
+        </body>
+
+</html>

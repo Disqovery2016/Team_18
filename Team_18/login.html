@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!--IE Compatibility modes-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Mobile first-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Login Page</title>
+    
+    <meta name="description" content="Free Admin Template Based On Twitter Bootstrap 3.x">
+    <meta name="author" content="">
+    
+    <meta name="msapplication-TileColor" content="#5bc0de" />
+    <meta name="msapplication-TileImage" content="assets/img/metis-tile.png" />
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/lib/bootstrap/css/bootstrap.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="assets/lib/font-awesome/css/font-awesome.css">
+    
+    <!-- Metis core stylesheet -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    
+    <!-- metisMenu stylesheet -->
+    <link rel="stylesheet" href="assets/lib/metismenu/metisMenu.css">
+    
+    <!-- animate.css stylesheet -->
+    <link rel="stylesheet" href="assets/lib/animate.css/animate.css">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body class="login">
+
+      <div class="form-signin">
+    <div class="text-center">
+        <img src="assets/img/logo.png" alt="Metis Logo">
+    </div>
+    <hr>
+    <div class="tab-content">
+        <div id="login" class="tab-pane active">
+                <p class="text-muted text-center">
+                    Enter your username and password
+                </p>
+                <input type="text" placeholder="Username" id="username" class="form-control top">
+                <input type="password" placeholder="Password" id="password" class="form-control bottom">
+                <div class="checkbox">
+		<!--  <label>
+		    <input type="checkbox"> Remember Me
+		  </label>	-->
+		</div>
+				<p class="text-center" id="err_msg">
+                    
+                </p>
+                <button class="btn btn-lg btn-primary btn-block" id="login_btn" >Login</button>
+        </div>
+        <div id="forgot" class="tab-pane">
+            <form action="index.html">
+                <p class="text-muted text-center">Enter your valid e-mail</p>
+                <input type="email" placeholder="mail@domain.com" class="form-control">
+                <br>
+                <button class="btn btn-lg btn-danger btn-block" type="submit">Recover Password</button>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <div class="text-center">
+        <ul class="list-inline">
+      
+            <li><a class="text-muted" href="#forgot" data-toggle="tab">Forgot Password</a></li>
+         <!--  <li><a class="text-muted" href="signup.html">Signup</a></li>	-->
+        </ul>
+    </div>
+  </div>
+
+
+    <!--jQuery -->
+    <script src="assets/lib/jquery/jquery.js"></script>
+
+    <!--Bootstrap -->
+    <script src="assets/lib/bootstrap/js/bootstrap.js"></script>
+
+
+    <script type="text/javascript">
+        (function($) {
+            $(document).ready(function() {
+                $('.list-inline li > a').click(function() {
+                    var activeForm = $(this).attr('href') + ' > form';
+                    //console.log(activeForm);
+                    $(activeForm).addClass('animated fadeIn');
+                    //set timer to 1 seconds, after that, unload the animate animation
+                    setTimeout(function() {
+                        $(activeForm).removeClass('animated fadeIn');
+                    }, 1000);
+                });
+				
+				$("#login_btn").click(function()
+				{
+                        $.ajax(
+                        {
+                            url:"php/login.php",
+                            method:"post",
+                            async:true,
+                            data:{username:$("#username").val(),password:$("#password").val()},
+                            success:function(data)
+                            {
+                                if(data==="success")
+                                {
+                                    document.location="dashboard.html";
+                                }
+                                else if(data==="Invalid Password")
+                                    $("#err_msg").html("<span class='label-danger'>Invalid Password, Try Again</span>");
+                                else if(data==="Invalid")
+                                    $("#err_msg").html("<span class='label-warning'>Invalid User Name, Try Again</span>");
+                            }
+                        }); 
+				});
+            });
+        })(jQuery);
+    </script>
+</body>
+
+</html>

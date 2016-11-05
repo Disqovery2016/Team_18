@@ -1,0 +1,18 @@
+int value=0;
+setup()
+{ pinMode(A2,INPUT); // making the port A2 as Input from L35 Temperature Sensor
+Serial.begin(9600); // Begin of Serial communication
+}
+loop()
+{
+value=analogRead(A2);
+serial.println(value);//This value is captured in visual Studio 2015 by Serial.
+
+}
+
+//In Visual Studio
+// First we have to add-on the SerialPort compnent fromtool box from Visual Studio 2015 C# language GUI
+// After adding the component then change the properties of the component to the port where the bluetooth module is connected.
+Serialport1.Open();// Open the connection of the port
+int i= Serialport1.readLine();  // Create a variable and assign the value to i
+//Sending the iformation by using HTTPRequest in .Net to a website.
