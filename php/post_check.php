@@ -13,12 +13,12 @@ if(isset($_POST['username']))
 	{
 		if($svalue >=60 && $svalue<=100)
 		{
-			$message="Dear Patient, your Heart Rate is Decreasing, please consult a doctor soon";
+			$message="Dear Patient, your HEART RATE is Decreasing, please consult a doctor soon - DigiCare";
 			$status=1;
 		}
 		else if($svalue > 100)
 		{
-			$message="Dear Patient, your Heart Rate is Increasing, please make your self relax";
+			$message="Dear Patient, your HEART RATE is Increasing, please make your self relax - DigiCare";
 			$status=1;
 		}
 		else{}
@@ -27,7 +27,7 @@ if(isset($_POST['username']))
 	{
 		if($svalue < 70 || $svalue >100)
 		{
-			$message="Dear Patient, your Blood Gllucose value is abnormal, please consult a doctor soon";
+			$message="Dear Patient, your BLOOd Glucose value is abnormal, please consult a doctor soon - DigiCare";
 			$status=1;
 		}
 		else{}
@@ -40,7 +40,7 @@ if(isset($_POST['username']))
 	{
 		if($svalue < 70 || $svalue >100)
 		{
-			$message="Dear Patient, your Blood Gllucose value is abnormal, please consult a doctor soon";
+			$message="Dear Patient, your PULSe Oximeter value is abnormal, please consult a doctor soon - DigiCare";
 			$status=1;
 		}
 		else{}
