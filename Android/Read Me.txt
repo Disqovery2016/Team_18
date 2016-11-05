@@ -1,0 +1,2 @@
+# this folder contains the code for Mobile App "DigiCare"
+# Also this the workspace Folder
